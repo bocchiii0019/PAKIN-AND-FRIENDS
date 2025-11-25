@@ -12,5 +12,10 @@ public class Player : MonoBehaviour, IInteractable
     public void Interact(IInteractable obj){
 
     }
+
+    public void SaveGame(Vector3 checkpoint)
+    {
+        
+    }
     
 }
