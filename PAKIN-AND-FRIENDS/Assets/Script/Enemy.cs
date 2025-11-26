@@ -12,6 +12,8 @@ public class Enemy : MonoBehaviour
     public float moveSpeed = 3f;
     public float detectionRadius = 1f;
     private bool isFollowing = false;
+    public float detectionTime = 2f;
+    private float outofdetectionRangeTimer = 0f;
     
     void Start()
     {
@@ -29,18 +31,24 @@ public class Enemy : MonoBehaviour
         else
         {
             isFollowing = false;
+            outofdetectionRangeTimer += Time.deltaTime;
         }
         
         if (isFollowing)
         {
-        if (distance > detectionRange)
-        {
+            if (distance > detectionRange)
+            {
             // ทิศทางวิ่งเข้าหา
             Vector3 direction = (target.position - transform.position).normalized;
 
             // ขยับตัวละครไปตามทิศทาง
             transform.position += direction * moveSpeed * Time.deltaTime;
+            }
         }
+
+        if (outofdetectionRangeTimer >= detectionTime)
+        {
+            Destroy(gameObject);
         }
     }
 }
