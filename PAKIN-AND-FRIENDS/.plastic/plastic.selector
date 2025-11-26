@@ -1,4 +1,4 @@
 repository "PAKIN-AND-FRIENDS/PAKIN-AND-FRIENDS@18967974339405@cloud"
   path "/"
-    br "/main"
-    co "/main"
+    smartbranch "/main" 
+     
